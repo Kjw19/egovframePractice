@@ -1,4 +1,6 @@
-package kr.spirng.main;
+package kr.spring.main;
+
+import java.awt.print.Book;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -15,6 +17,8 @@ import kr.spring.ch08.EmailSender;
 import kr.spring.ch08.WorkController;
 import kr.spring.ch09.UploadController;
 import kr.spring.ch10.PerformanceMonitor;
+import kr.spring.ch11.ProtocolHandlerFactory;
+import kr.spring.ch12.BookClient;
 
 public class SpringMain2 {
 
@@ -34,6 +38,11 @@ public class SpringMain2 {
 		//List 타입 프로퍼티 설정
 		PerformanceMonitor monitor = (PerformanceMonitor)context.getBean("performanceMonitor");
 		
+		//Map 타입 프로퍼티 설정
+		ProtocolHandlerFactory protocol = (ProtocolHandlerFactory)context.getBean("protocolHandlerFactory"); 
+		
+		//
+		BookClient book = (BookClient)context.getBean("bookClient");
 		
 		System.out.print("ch07 : ");
 		service.write();
@@ -45,7 +54,14 @@ public class SpringMain2 {
 		System.out.println(upload);
 		
 		System.out.print("ch10 : ");
-		System.out.print(monitor);
+		System.out.println(monitor);
+		
+		System.out.print("ch11 : ");
+		System.out.println(protocol);
+		
+		System.out.print("ch12 : ");
+		System.out.println(book);
+		
 		
 		
 		//어플리케이션 종료 시 컨테이너에 존재하는 모든 빈(객체)를 종료

@@ -8,5 +8,17 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!-- 컨테이너에 빈 객체를 등록하기 위해서 검색할 패키지 지정 -->
+	<context:component-scan base-package="kr.spring.ch17">
+	</context:component-scan>
 
 </beans>
+
+
+
+
+
+
+
+
+

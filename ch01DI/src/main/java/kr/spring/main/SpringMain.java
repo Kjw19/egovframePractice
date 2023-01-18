@@ -1,4 +1,4 @@
-package kr.spirng.main;
+package kr.spring.main;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

@@ -47,6 +47,39 @@
 				</list>
 			</property>
 		</bean>
+		
+		<!-- Map 타입 프로퍼티 설정 -->
+		<bean name="protocolHandlerFactory"
+			class="kr.spring.ch11.ProtocolHandlerFactory">
+			<property name="map">
+				<map>
+				<entry>				
+					<key><value>soap</value></key>
+					<ref bean="soapHandler"/>
+				</entry>
+				<entry>				
+					<key><value>rest</value></key>
+					<ref bean="soapHandler"/>
+				</entry>
+				</map>
+			</property>
+		</bean>		
+		<bean name="soapHandler" class="kr.spring.ch11.SoapHandler"/>
+		<bean name="restHandler" class="kr.spring.ch11.RestHandler"/>
+		
+		<!-- Properties 타입 프로퍼티 설정 -->
+		<bean name="bookClient" class="kr.spring.ch12.BookClient">
+			<property name="prop">
+			<!-- Properties 객체 생성 -->
+			<props>
+			<!--  프로퍼티 입장에서는 key와 값 모두 String으로 인식 -->
+				<prop key="server">192.168.0.1</prop>
+				<prop key="connectionTimeout">5000</prop>
+			</props>
+			</property>
+		</bean>
+		
+		
 </beans>
 
 
