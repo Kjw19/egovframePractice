@@ -2,6 +2,11 @@ package kr.spring.ch20.aop.annot;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Pointcut;
 
 //공통 기능이 구현되는 클래스
@@ -35,27 +40,27 @@ public class MyFirstAspect {
 	public void getPointcut() {
 		
 	}
-	
+	//@Before("getPointcut()")
 	public void before() {
 		//메서드 시작 직전에 동작하는 어드바이스
 		System.out.println(
 				"Hello Before! **메서드가 호출되기 전에 나온다!");
 		
 	}
-	
+	//@AfterReturning(value="getPointcut()", returning="msg")
 	public void AfterReturning(String msg) {
 		//메서드 호출이 예외를 내보내지 않고 종료했을 때 동작하는 어드바이스
 		System.out.println("Hello AfterReturning! **메서드가 호출한 후에 나온다!"
 				+ "전달된 객체 : " + msg);
 		
 	}
-	
+	//@AfterThrowing(value = "getPointcut()", throwing="ex")
 	public void afterThrowing(Exception ex) {
 		//메서드 호출이 예외를 던졌을 때 동작하는 어드바이스
 		System.out.println("Hello AfterThrowing !!"
 				+ "**예외가 생기면 나온다! 예외 : " + ex);
 	}
-	
+	//@After("getPointcut()")
 	public void after() {
 		//예외가 발생해도 실행됨
 		//메서드 종료 후에 동작하는 어드바이스
@@ -63,6 +68,7 @@ public class MyFirstAspect {
 	}
 	//반환 타입을 지정하면 이 기능 이후에 실행되는 공통 기능에서 
 	//반환하는 데이터를 받을 수 있음
+	@Around("getPointcut()")
 	public String around(
 			ProceedingJoinPoint joinPoint) throws Throwable{
 		//	ProceedingJoinPoint 가 핵심기능 수행하는 객체를 가지고있다.
